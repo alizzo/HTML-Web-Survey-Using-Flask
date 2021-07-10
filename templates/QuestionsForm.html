@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 15px;
+    }
+</style>
+    <meta charset="UTF-8">
+    <title>List of Questions</title>
+</head>
+<body>
+<h1>Question List</h1><br>
+
+<!--
+<label for="category">Category:</label><br>
+ <select name="category" id="category">
+ {% for category in category_list %}
+ <option value="{{category[0]}}">
+ {{category[0]}}</option>
+ {% endfor %}
+ </select><br><br>
+
+ -->
+
+   <table style="width:50%">
+            <tr>
+               <th> Questions </th>
+            </tr>
+         {% for questions in question_list %}
+            <tr>
+               <td><a href="/{{ questions[0] }}"> {{ questions[1] }} </a></td>
+            </tr>
+
+         {% endfor %}
+   </table><br><br>
+
+
+
+
+
+
+
+
+
+<br><br>
+<!--  <a href="/"><input type="submit" value="go to poll"></a> -->
+
+</body>
+</html>

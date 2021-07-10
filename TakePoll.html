@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Questions</title>
+    <style>
+        #test {
+            width: 100px;
+            height: 50px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<h1>Poll Question</h1><br>
+
+
+ <table>
+     <form id = "button" action="/results" method="post">
+     <!--<form onsubmit="return validateForm()" >  -->
+        {% for questions in question_list %}
+          <label for="hiddenQuestionID"></label>  <!-- Can input type have no type?  -->
+          <input type="text" id="hiddenQuestionID" name="questionID" value="{{questions[0]}}"><br>
+        <tr>
+            <th><u><div id="questionTitle" style="text-align: left; text-transform:capitalize;">{{ questions[2] }} </div></u> </th>
+        </tr>
+        <tr>
+            <td> <input type="radio" id="UserResponse1" name="Question" value="A">
+                <label for="UserResponse1">A.  {{ questions[3] }}</label><br> </td>
+        </tr>
+        <tr>
+            <td>   <input type="radio" id="UserResponse2" name="Question" value="B">
+                <label for="UserResponse2">B. {{ questions[4] }}</label><br></td>
+        </tr>
+        <tr>
+            <td>  <input type="radio" id="UserResponse3" name="Question" value="C">
+                <label for="UserResponse3">C. {{ questions[5]}}</label><br> </td>
+        </tr>
+        <tr>
+            <td>   <input type="radio" id="UserResponse4" name="Question" value="D">
+                <label for="UserResponse4">D. {{ questions[6] }}</label><br> </td>
+        </tr>
+        <tr>
+            <td>
+                 <br><button id="button">see answer </button>
+
+
+            <!--    <br><br><div id="answer">The correct answer is: {{ questions[7] }}</div>
+                <br><br>  -->
+            </td>
+        </tr>
+    </form>
+    {% endfor %}
+</table><br><br>
+
+
+<script>
+document.getElementById("hiddenQuestionID").style.display ="none";
+document.getElementById("answer").style.display ="none";
+function validateForm() {
+    var choice = document.getElementsByName("Question");
+    var noAnswerSelectedFlag = false;
+    for(var i = 0; i < choice.length; i++) {
+        if(!(choice[i].checked)){
+            noAnswerSelectedFlag = true;
+        }
+        else {
+            noAnswerSelectedFlag = false;
+            break;
+        }
+    }
+    if(!noAnswerSelectedFlag) {
+        document.getElementById("answer").style.display = "block";
+    }
+    else {
+        alert("please select an answer.");
+    }
+    return false;
+
+}
+</script>
+
+
+</body>
+</html>

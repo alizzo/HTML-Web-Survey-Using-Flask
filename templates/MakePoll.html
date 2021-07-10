@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add a new poll question using our unpatented technology</title>
+    <script>
+        function validateForm() {
+            var choice = document.getElementsByName("response");
+            var noAnswerSelectedFlag = false;
+            var title = document.forms["create_poll_form"]["QuestionTitle"].value;
+            var question = document.forms["create_poll_form"]["askQuestion"].value;
+            var firstResponse = document.forms["create_poll_form"]["Response1"].value;
+            var secondResponse = document.forms["create_poll_form"]["Response2"].value;
+            var thirdResponse = document.forms["create_poll_form"]["Response3"].value;
+            var fourthResponse = document.forms["create_poll_form"]["Response4"].value;
+            if (title == "") {
+                alert("please fill out the title");
+                return false;
+            }
+            if (question == "") {
+                alert("please fill the question");
+                return false;
+            }
+            if (firstResponse == "" || secondResponse == "" || thirdResponse == "" || fourthResponse == "") {
+                alert("please fill out all the reponses");
+                return false;
+            }
+            for(var i = 0; i < choice.length; i++) {
+                 if(!(choice[i].checked)){
+                    noAnswerSelectedFlag = true;
+                }else{
+                    noAnswerSelectedFlag = false;
+                    break;
+                }
+            }
+             if(noAnswerSelectedFlag) {
+                 alert("please select an answer.");
+                 return false;
+             }
+        }
+
+              function display_contact_form() {
+        /*
+         * Set the visual display of the radio buttons
+         */
+        contact_radio_button = document.getElementById("answerForm");
+        contact_radio_button.checked = true;
+        newsletter_radio_button = document.getElementById("freeResponse");
+        newsletter_radio_button.checked = false;
+
+        /*
+         * Make the answerForm form visible and the other one invisible
+         */
+        var contactForm = document.getElementById("create_poll_form");
+        var newsletterForm = document.getElementById("create_poll_form2");
+        contactForm.style.display = "block";
+        newsletterForm.style.display = "none";
+      }
+
+      function display_newsletter_form() {
+        /*
+         * Set the visual display of the radio buttons
+         */
+        contact_radio_button = document.getElementById("answerForm");
+        contact_radio_button.checked = false;
+        newsletter_radio_button = document.getElementById("freeResponse");
+        newsletter_radio_button.checked = true;
+
+        /*
+         * Make the freeResponse form visible and the other one invisible
+         */
+        var contactForm = document.getElementById("create_poll_form");
+        var newsletterForm = document.getElementById("create_poll_form2");
+        contactForm.style.display = "none";
+        newsletterForm.style.display = "block";
+      }
+
+    </script>
+
+
+</head>
+
+<body onload="display_contact_form();">
+
+ <!--break-->
+
+
+<h2 style="text-align: left;">Make a poll!</h2>
+
+
+<h4>What type of poll are you creating?</h4>
+<label>Defined answer </label> <input type="radio" id="answerForm" value="answerForm" name="contact_picker" checked onclick="display_contact_form();"/>
+<label>Freetext Response: </label> <input type="radio" id="freeResponse" value="freeResponse" name="newsletter_picker" onclick="display_newsletter_form();"/>
+
+<br><br>
+<form id = "create_poll_form" class="u-none"  action="/poll_created" onsubmit="return validateForm()" method="post">
+  <label><span>Please enter a title for your question: </span><input type="text" id="QuestionTitle" name="questionTitle" value=""><br><br></label>
+  <label><span>Ask a question that you want answered: </span><br><textarea id="askQuestion" name="askQuestion" rows="4" cols="50"></textarea><br></label>
+   <p>Please put a check next to the correct answer.</p>
+
+ <input type="radio" id="QuestionA" name="response" value="A">
+ <label><span>A.) First response:</span><input type="text" id="Response1" name="ansQuestionResponse1" value=""><br><br></label>
+
+  <input type="radio" id="QuestionB" name="response" value="B">
+  <label><span>B.) Second response: </span> <input type="text" id="Response2" name="ansQuestionResponse2" value=""><br><br></label>
+
+  <input type="radio" id="QuestionC" name="response" value="C">
+  <label><span>C.) Third response :</span> <input type="text" id="Response3" name="ansQuestionResponse3" value=""><br><br></label>
+
+  <input type="radio" id="QuestionD" name="response" value="D">
+  <label><span>D.) Fourth response :</span><input type="text" id="Response4" name="ansQuestionResponse4" value=""><br><br><br></label>
+
+
+
+
+
+  <input type="submit" value="Submit">
+</form>
+
+
+<form id = "create_poll_form2" class="u-none"  action="/poll_created"  method="post"> <!-- onsubmit="return validateForm()"   add different javascript rules?-->
+  <label><span>Please enter a title for your question: </span><input type="text" id="QuestionTitle" name="questionTitle" value="" required><br><br></label>
+  <label><span>Ask a question that you want answered: </span><br><textarea id="askQuestion" name="askQuestion" rows="4" cols="50" required></textarea><br></label>
+   <p>Please put a check next to the correct answer.</p>
+
+
+ <label><span>First response:</span><input type="text" id="Response1" name="ansQuestionResponse1" value="" required><br><br></label>
+  <label><span>Second response: </span> <input type="text" id="Response2" name="ansQuestionResponse2" value="" required><br><br></label>
+  <label><span>Third response :</span> <input type="text" id="Response3" name="ansQuestionResponse3" value="" required><br><br></label>
+  <label><span>Fourth response :</span><input type="text" id="Response4" name="ansQuestionResponse4" value="" required><br><br><br></label>
+
+  <input type="submit" value="Submit">
+</form>
+
+
+
+
+
+
+
+</body>
+</html>

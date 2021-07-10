@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Add a new poll question using our unpatented technology</title>
+    <script>
+        function validateForm() {
+            var choice = document.getElementsByName("response");
+            var noAnswerSelectedFlag = false;
+            var title = document.forms["create_poll_form"]["QuestionTitle"].value;
+            var question = document.forms["create_poll_form"]["askQuestion"].value;
+            var firstResponse = document.forms["create_poll_form"]["Response1"].value;
+            var secondResponse = document.forms["create_poll_form"]["Response2"].value;
+            var thirdResponse = document.forms["create_poll_form"]["Response3"].value;
+            var fourthResponse = document.forms["create_poll_form"]["Response4"].value;
+            if (title == "") {
+                alert("please fill out the title");
+                return false;
+            }
+            if (question == "") {
+                alert("please fill the question");
+                return false;
+            }
+            if (firstResponse == "" || secondResponse == "" || thirdResponse == "" || fourthResponse == "") {
+                alert("please fill out all the reponses");
+                return false;
+            }
+            for(var i = 0; i < choice.length; i++) {
+                 if(!(choice[i].checked)){
+                    noAnswerSelectedFlag = true;
+                }else{
+                    noAnswerSelectedFlag = false;
+                    break;
+                }
+            }
+             if(noAnswerSelectedFlag) {
+                 alert("please select an answer.");
+                 return false;
+             }
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+ <!--break-->
+
+
+<h2 style="text-align: left;">Add a new poll question</h2>
+
+
+<form id = "create_poll_form" action="/poll_created" onsubmit="return validateForm()" method="post">
+
+  <label for="PrimaryKey">Please enter the primary key (located in the URL):</label><br>
+  <input type="text" id="PrimaryKey" name="questionID" value=""><br><br>
+
+  <label for="QuestionTitle">Please enter a title for your question:</label><br>
+  <input type="text" id="QuestionTitle" name="questionTitle" value=""><br><br>
+
+  <label for="askQuestion">Ask a question that you want answered:</label><br>
+  <textarea id="askQuestion" name="askQuestion" rows="4" cols="50"></textarea><br><br><br>
+
+ <p>Please put a check next to the correct answer.</p><br>
+
+
+  <input type="radio" id="QuestionA" name="response" value="A">
+  <label for="Response1">A.) First response: </label>
+  <input type="text" id="Response1" name="ansQuestionResponse1" value=""><br>
+
+  <input type="radio" id="QuestionB" name="response" value="B">
+  <label for="Response2">B.) Second response : </label>
+  <input type="text" id="Response2" name="ansQuestionResponse2" value=""><br>
+
+  <input type="radio" id="QuestionC" name="response" value="C">
+  <label for="Response3">C.) Third response :</label>
+  <input type="text" id="Response3" name="ansQuestionResponse3" value=""><br>
+
+  <input type="radio" id="QuestionD" name="response" value="D">
+  <label for="Response4">D.) Fourth response :</label>
+  <input type="text" id="Response4" name="ansQuestionResponse4" value=""><br><br>
+
+<input type="submit" value="Add question">
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

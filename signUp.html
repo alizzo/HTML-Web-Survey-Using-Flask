@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Sign Up</title>
+</head>
+<body>
+<h2 style="text-align: left;">Add a new user</h2>
+
+<form action="/signUpNewUser" method="post"> <!-- signUpNewUser -->
+
+    <label for="username">User Name:</label><br>
+  <input type="text" id="username" name="username" value="" placeholder="Username" required><br>
+
+    <label for="firstname">First Name:</label><br>
+  <input type="text" id="firstname" name="firstName" value="" placeholder="First name" required><br>
+
+    <label for="mi">Middle Initial:</label><br>
+  <input type="text" id="mi" name="mi" value="" placeholder="Middle initial" required><br>
+
+    <label for="lastname">Last Name:</label><br>
+  <input type="text" id="lastname" name="lastName" value="" placeholder="Last name" required><br>
+
+    <label for="email">Email:</label><br>
+  <input type="text" id="email" name="emailaddress" value="" placeholder="Email" required><br>
+
+    <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password" value="" placeholder="Password" required><br>
+
+  <br>
+  <br>
+  <input type="submit" value="Add new user">
+</form>
+<br>
+<p>We <strong>did not</strong> spend a whole lot of time on security, please <strong>do not</strong> provide a password that is important to you.</p>
+
+</body>
+</html>

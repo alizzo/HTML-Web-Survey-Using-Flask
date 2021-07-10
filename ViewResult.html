@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Correct Answer</title>
+</head>
+<body>
+
+
+
+    <h3><a href="/">Return to main page!</a></h3>
+<!-- <h1>{{ Question }}</h1> -->
+
+ <p>Answer based question responses</p>
+   <table id="mytable" border = 1 style="float: left; padding: 20px;">
+            <tr>
+               <th> Users</th>
+                <th>questionID</th>
+                <th>Selected answer Choice</th>
+                 <th>Correct Answer</th>
+            </tr>
+         {% for response in response_list %}
+            <tr>
+               <td> {{ response[8] }} </td>
+                <td> {{ response[0] }} </td>
+                 <td> {{ response[9] }} </td>
+                 <td> {{ response[7] }} </td>
+            </tr>
+
+         {% endfor %}
+   </table>
+
+
+   <p>Free text responses by %. (this table is not displaying correctly) </p>
+   <table id="mytable2" border = 1 style="float: left; padding: 20px;">
+            <tr>
+               <th> Question Title</th>
+                <th>Number of people polled </th>
+                <th>A</th>
+                 <th>B</th>
+                <th>C</th>
+                 <th>D</th>
+            </tr>
+         {% for response in responses2 %}
+            <tr>
+               <td> {{ response[1]}} </td>
+                <td> {{ count[0] }} </td>
+                 <td> {{count2[0]}} </td>
+                 <td> {{count3[0]}} </td>
+                <td> {{count4[0]}} </td>
+                 <td> {{count5[0]}} </td>
+            </tr>
+
+    {% endfor %}
+   </table>
+
+
+
+
+
+   </table>
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Choose a question to delete</title>
+</head>
+<body>
+<h1>Question List</h1><br>
+
+<form id = "delete_poll_form" action="/DeletePollComplete" method="post">
+<label for="category">Question to delete:</label><br>
+ <select name="category" id="category">
+ {% for category in category_list %}
+ <option name="category"  value="{{category[0]}}"> {{category[0]}} {{category[1]}} </option>
+ {% endfor %}
+ </select><br><br>
+
+<input type="submit" value="Delete question">
+</form>
+<br><br>
+<a href="/"><input type="submit" value="Return Home"></a>
+<br><br>
+
+
+</body>
+</html>
